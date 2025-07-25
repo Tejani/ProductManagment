@@ -24,8 +24,8 @@ public class ProductsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(Guid id)
     {
-        var product = await _mediator.Send(new GetAllProductsQuery());
-        return Ok(product.FirstOrDefault(x => x.Id == id));
+        var product = await _mediator.Send(new GetProductByIdQuery(id));
+        return Ok(product);
     }
 
     [HttpGet]
