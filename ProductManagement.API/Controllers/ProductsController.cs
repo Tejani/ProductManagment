@@ -25,13 +25,31 @@ public class ProductsController : ControllerBase
     public async Task<IActionResult> GetById(Guid id)
     {
         var product = await _mediator.Send(new GetProductByIdQuery(id));
-        return Ok(product);
+        
+        if (product is not null)
+        {
+            return Ok(product);
+        }
+
+        return Ok(new
+        {
+            Message = "Product not found."
+        });
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
         var products = await _mediator.Send(new GetAllProductsQuery());
-        return Ok(products);
+
+        if (products.Count > 0)
+        {
+            return Ok(products);
+        }
+
+        return Ok(new
+        {
+            Message = "No records found."
+        });
     }
 }
