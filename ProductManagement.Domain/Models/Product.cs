@@ -27,18 +27,13 @@ namespace ProductManagement.Domain.Models
 
         public void AddVariant(Variant variant)
         {
-            if (Variants.Any(v => v.Equals(variant)))
-                throw new InvalidOperationException("Duplicate variant is not allowed.");
-
             Variants.Add(variant);
         }
 
-        public void Activate()
+        public void IsActivate()
         {
-            if (Price <= 0)
-                throw new InvalidOperationException("Product cannot be activated with non-positive price.");
-
-            IsActive = true;
+            if (Price > 0)
+                IsActive = true;
         }
 
         public void Deactivate() => IsActive = false;

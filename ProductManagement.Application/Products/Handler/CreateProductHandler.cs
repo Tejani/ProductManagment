@@ -17,6 +17,7 @@ public class CreateProductHandler : IRequestHandler<CreateProductCommand, Guid>
 
         foreach (var variant in request.Variants)
         {
+            product.IsActivate();
             product.AddVariant(variant);
         }
         
