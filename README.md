@@ -2,22 +2,27 @@
 
 
 ProductManagement.API
+
 	dotnet add package MediatR --version 11.1.0
 	dotnet add package Microsoft.EntityFrameworkCore.Design --version 9.0.7
 	dotnet add package FluentValidation --version 12.0.0
 	dotnet add package FluentValidation.DependencyInjectionExtensions --version 12.0.0
 
 ProductManagement.Application
+
 	dotnet add package MediatR.Extensions.Microsoft.DependencyInjection --version 11.1.0
 	dotnet add package FluentValidation --version 12.0.0
 	
 ProductManagement.Infrastructure
+
 	dotnet add package Microsoft.EntityFrameworkCore --version 9.0.7
 	dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 9.0.7
 	
 
-*** Migration Script ***	
+*** Migration Script ***
+
 dotnet ef migrations add InitialCreate --project ProductManagement.Infrastructure --startup-project ProductManagement.API
+
 dotnet ef database update --project ProductManagement.Infrastructure --startup-project ProductManagement.API
 
 
